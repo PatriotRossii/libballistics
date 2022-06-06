@@ -8,15 +8,15 @@ add_subdirectory(test)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -finline-functions -O3")
 
-add_executable(example example.c)
+add_executable(example src/example.c)
 target_link_libraries(example PRIVATE m ballistics)
 #install(TARGETS example DESTINATION bin)
 
 add_library(ballistics STATIC
-        angle.c
-        atmosphere.c
-        ballistics.c
-        pbr.c
+        src/angle.c
+        src/atmosphere.c
+        src/ballistics.c
+        src/pbr.c
         )
 target_link_libraries(ballistics PRIVATE m)
 set_target_properties(ballistics PROPERTIES LINK_FLAGS "-Wl,--whole-archive")
